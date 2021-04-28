@@ -1,0 +1,29 @@
+{
+  "name": "ecommerce-mariatcha",
+  "version": "1.0.0",
+  "description": "MERN shopping cart app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fximenessilva/ecommerce-mariatcha.git"
+  },
+  "author": "Francisco Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fximenessilva/ecommerce-mariatcha/issues"
+  },
+  "homepage": "https://github.com/fximenessilva/ecommerce-mariatcha#readme",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "debug": "^4.3.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
