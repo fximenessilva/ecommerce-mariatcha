@@ -1,13 +1,12 @@
 {
   "name": "ecommerce-mariatcha",
   "version": "1.0.0",
-  "description": "MERN shopping cart app",
+  "description": "MERN e-commerce",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node backend/index",
-    "server": "nodemon backend/index",
-    "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "server": "node backend/server",
+    "start": "nodemon backend/server"
   },
   "repository": {
     "type": "git",
@@ -20,14 +19,14 @@
   },
   "homepage": "https://github.com/fximenessilva/ecommerce-mariatcha#readme",
   "dependencies": {
-    "chalk": "^4.1.1",
-    "debug": "^4.3.1",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.12.6",
+    "nodemon": "^2.0.7"
   },
   "devDependencies": {
-    "concurrently": "^6.0.2",
-    "nodemon": "^2.0.7",
     "eslint": "^7.25.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1"
