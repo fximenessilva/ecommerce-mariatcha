@@ -2,8 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js'
-import products from './data/products.js'
 import colors from 'colors'
+import {notFound, errorHandler} from './middleware/errorMiddleware.js'
+import productRoutes from './routes/productRoutes.js'
 
 
 const app = express();
@@ -13,21 +14,16 @@ dotenv.config();
 
 connectDB();
 
+app.use('/api/products', productRoutes)
+
+app.use(notFound)
+app.use(errorHandler)
+
 const PORT = process.env.PORT || 8888
 
 app.get('/', (req, res) => {
     res.send('API RUNNING......')
 })
-
-app.get('/api/products', (req, res)=> {
-    res.json(products)
-})
-
-
-app.get('/api/products/:id', (req, res)=> {
-    const product = products.find(p => p._id === req.params.id);
-    res.json(product)
-});
 
 app.listen(
     PORT,
