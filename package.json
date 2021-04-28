@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "server": "node backend/server",
-    "start": "nodemon backend/server"
+    "start": "nodemon backend/server",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   },
   "homepage": "https://github.com/fximenessilva/ecommerce-mariatcha#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
