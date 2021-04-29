@@ -12,7 +12,7 @@ import Loader from '../Loader/Loader';
 const ProductList = () => {
   const dispatch = useDispatch();
 
-  const productList = useSelector((state) => state.productListReducer);
+  const productList = useSelector((state) => state.productReducer);
 
   const { loading, error, products } = productList;
 
