@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 /* eslint-disable import/prefer-default-export */
 
 import axios from 'axios';
@@ -30,6 +31,37 @@ export function requestProducts() {
       dispatch(requestProductsSuccess(data));
     } catch (error) {
       dispatch(requestProductsError(error));
+    }
+  };
+}
+
+function requestProductDetailSuccess(product) {
+  return {
+    type: actionTypes.PRODUCT_DETAIL_SUCCESS,
+    product,
+  };
+}
+
+function requestProductDetailError(error) {
+  return {
+    type: actionTypes.PRODUCT_DETAIL_FAIL,
+    error:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+  };
+}
+
+export function requestProductDetail(id) {
+  return async (dispatch) => {
+    const endpoint = `http://localhost:8888/api/products/${id}`;
+    try {
+      dispatch({ type: actionTypes.PRODUCT_DETAIL_REQUEST });
+
+      const { data } = await axios.get(endpoint);
+      dispatch(requestProductDetailSuccess(data));
+    } catch (error) {
+      dispatch(requestProductDetailError(error));
     }
   };
 }
