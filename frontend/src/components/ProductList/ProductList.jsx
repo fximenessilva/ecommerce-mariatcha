@@ -6,6 +6,8 @@ import { Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Product from '../Product/Product';
 import { requestProducts } from '../../redux/action/productActions';
+import Message from '../Message/Message';
+import Loader from '../Loader/Loader';
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -13,6 +15,7 @@ const ProductList = () => {
   const productList = useSelector((state) => state.productListReducer);
 
   const { loading, error, products } = productList;
+
   useEffect(() => {
     dispatch(requestProducts());
   }, [dispatch]);
@@ -20,8 +23,8 @@ const ProductList = () => {
   return (
     <>
       <h1>Latest Products</h1>
-      {loading ? <h1>LOADING</h1>
-        : error ? <h1>{error}</h1>
+      {loading ? <Loader />
+        : error ? <Message variant="danger">{error}</Message>
           : (
             <Row>
               {products.map((product) => (
