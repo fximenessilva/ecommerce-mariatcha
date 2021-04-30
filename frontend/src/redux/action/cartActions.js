@@ -18,7 +18,8 @@ const addToCart = (id, qty) => async (dispatch, getState) => {
     },
   });
 
-  localStorage.setItem('cartItems', JSON.stringify(getState().cartReducer.cartItems));
+  const cartItems = JSON.stringify(getState().cartReducer.cartItems);
+  localStorage.setItem('cartItems', cartItems);
 };
 
 const removeFromCart = (id) => (dispatch, getState) => {
@@ -27,7 +28,8 @@ const removeFromCart = (id) => (dispatch, getState) => {
     payload: id,
   });
 
-  localStorage.setItem('cartItems', JSON.stringify(getState().cartReducer.cartItems));
+  const cartItems = JSON.stringify(getState().cartReducer.cartItems);
+  localStorage.setItem('cartItems', cartItems);
 };
 
 export { addToCart, removeFromCart };
