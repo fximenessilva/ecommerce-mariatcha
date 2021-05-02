@@ -8,6 +8,7 @@ import ProductDetail from './components/ProductDetail/ProductDetail';
 import Cart from './components/Cart/Cart';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import Profile from './components/Profile/Profile';
 
 const App = () => (
   <Router>
@@ -16,6 +17,7 @@ const App = () => (
       <Container>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/profile" component={Profile} />
         <Route path="/product/:id" component={ProductDetail} />
         <Route path="/cart/:id?" component={Cart} />
         <Route path="/" exact component={ProductList} />
