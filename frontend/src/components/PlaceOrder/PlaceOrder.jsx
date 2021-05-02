@@ -1,6 +1,8 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   Button, Row, Col, ListGroup, Image, Card,
 } from 'react-bootstrap';
@@ -8,8 +10,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Message from '../Message/Message';
 import CheckoutSteps from '../CheckoutSteps/CheckoutSteps';
+import { createOrder } from '../../redux/action/orderActions';
 
-const PlaceOrder = () => {
+const PlaceOrder = ({ history }) => {
+  const dispatch = useDispatch();
+
   const cart = useSelector((state) => state.cartReducer);
 
   const addDecimals = (num) => (Math.round(num * 100) / 100).toFixed(2);
@@ -27,8 +32,25 @@ const PlaceOrder = () => {
   + +(cart.taxPrice)
   ).toFixed(2);
 
+  const orderCreate = useSelector((state) => state.orderCreateReducer);
+  const { order, success, error } = orderCreate;
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order._id}`);
+    }
+  }, [history, success]);
+
   const placeOrderHandler = () => {
-    console.loga(1);
+    dispatch(createOrder({
+      orderItems: cart.cartItems,
+      shippingAddress: cart.shippingAddress,
+      paymentMethod: cart.paymentMethod,
+      itemsPrice: cart.itemsPrice,
+      shippingPrice: cart.shippingPrice,
+      taxPrice: cart.taxPrice,
+      totalPrice: cart.totalPrice,
+    }));
   };
   return (
     <>
@@ -148,6 +170,10 @@ const PlaceOrder = () => {
                   </Col>
                 </Row>
               </ListGroup.Item>
+
+              <ListGroup.Item>
+                {error && <Message variant="danger">{error}</Message>}
+              </ListGroup.Item>
               <ListGroup.Item>
                 <Button
                   type="button"
@@ -156,7 +182,6 @@ const PlaceOrder = () => {
                   onClick={placeOrderHandler}
                 >
                   Fazer pedido
-
                 </Button>
               </ListGroup.Item>
             </ListGroup>
