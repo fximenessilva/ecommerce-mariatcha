@@ -18,7 +18,10 @@ const cartReducer = (state = { cartItems: [], shippingAddress: {} }, action) => 
       return { ...state, cartItems: state.cartItems.filter((x) => x.product !== action.payload) };
 
     case actionTypes.CART_SAVE_SHIPPING_ADDRESS:
-      return { ...state, shippingAddress: state.data };
+      return { ...state, shippingAddress: action.data };
+
+    case actionTypes.CART_SAVE_PAYMENT_METHOD:
+      return { ...state, paymentMethod: action.data };
 
     default:
       return state;
