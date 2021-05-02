@@ -3,13 +3,13 @@ import actionTypes from '../action/actionTypes';
 const productReducer = (state = { products: [] }, action) => {
   switch (action.type) {
     case actionTypes.PRODUCT_LIST_REQUEST:
-      return { ...state, loading: true, products: [] };
+      return { loading: true, products: [] };
 
     case actionTypes.PRODUCT_LIST_SUCCESS:
-      return { ...state, loading: false, products: action.products };
+      return { loading: false, products: action.products };
 
     case actionTypes.PRODUCT_LIST_FAIL:
-      return { ...state, loading: false, error: action.error };
+      return { loading: false, error: action.error };
 
     default:
       return state;
@@ -22,10 +22,10 @@ const productDetailReducer = (state = { product: { reviews: [] } }, action) => {
       return { ...state, loading: true, product: {} };
 
     case actionTypes.PRODUCT_DETAIL_SUCCESS:
-      return { ...state, loading: false, product: action.product };
+      return { loading: false, product: action.product };
 
     case actionTypes.PRODUCT_DETAIL_FAIL:
-      return { ...state, loading: false, error: action.error };
+      return { loading: false, error: action.error };
 
     default:
       return state;
