@@ -5,6 +5,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../FormContainer/FormContainer';
 import { saveShippingAddress } from '../../redux/action/cartActions';
+import CheckoutSteps from '../CheckoutSteps/CheckoutSteps';
 
 const Shipping = ({ history }) => {
   const cart = useSelector((state) => state.cartReducer);
@@ -26,6 +27,7 @@ const Shipping = ({ history }) => {
   };
   return (
     <FormContainer>
+      <CheckoutSteps step1 step2 />
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="address">
@@ -72,7 +74,10 @@ const Shipping = ({ history }) => {
           />
         </Form.Group>
 
-        <Button type="submit" variant="primary">
+        <Button
+          type="submit"
+          variant="primary"
+        >
           Continuar
         </Button>
       </Form>

@@ -10,6 +10,8 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Profile from './components/Profile/Profile';
 import Shipping from './components/Shipping/Shipping';
+import Payment from './components/Payment/Payment';
+import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 
 const App = () => (
   <Router>
@@ -17,6 +19,8 @@ const App = () => (
     <main className="py-3">
       <Container>
         <Route path="/shipping" component={Shipping} />
+        <Route path="/payment" component={Payment} />
+        <Route path="/placeorder" component={PlaceOrder} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/profile" component={Profile} />
